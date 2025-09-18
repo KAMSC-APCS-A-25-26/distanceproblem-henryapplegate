@@ -40,7 +40,7 @@ public class DistanceMultiple {
         int runs = sc.nextInt();
         System.out.println();
 
-        for(int i = 1; i <= runs; i++){
+        for(int i = 1; i <= runs; i++) {
             // Prompt for 3 numbers
             System.out.print("Enter number 1:  ");
             double num1 = sc.nextDouble();
@@ -51,17 +51,17 @@ public class DistanceMultiple {
 
             // Find the average of the numbers
             System.out.println();
-            double avg = (num1+num2+num3)/3;
-            System.out.println("The average is "+avg);
+            double avg = (num1 + num2 + num3) / 3;
+            System.out.println("The average is " + avg);
 
             // Find the sum of the numbers
-            double sum = num1+num2+num3;
-            System.out.println("The sum is "+sum);
+            double sum = num1 + num2 + num3;
+            System.out.println("The sum is " + sum);
 
             // Find the product of the numbers
-            double product = num1*num2*num3;
-            System.out.println("The product is "+product);
+            double product = num1 * num2 * num3;
+            System.out.println("The product is " + product);
             System.out.println();
+        }
     }
-
 }
