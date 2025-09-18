@@ -29,39 +29,46 @@
 // Rerun
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class DistanceMultiple {
+public class DistanceMultiple 
+{
     public static void main(String[] args)
     {
-        Scanner sc = new Scanner(System.in);
+        // Signature
+        System.out.println("Henry Applegate\nAPCS-A\nLewis Artithmetic 2.8\n");
+
+        // Create scanner
+        Scanner scanner = new Scanner(System.in);
 
         // Prompt for number of runs
-        System.out.print("How many times do you want to run the program?  ");
-        int runs = sc.nextInt();
-        System.out.println();
+        System.out.print("Enter number of runs:  ");
+        int runs = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("");
 
-        for(int i = 1; i <= runs; i++) {
-            // Prompt for 3 numbers
-            System.out.print("Enter number 1:  ");
-            double num1 = sc.nextDouble();
-            System.out.print("Enter number 2:  ");
-            double num2 = sc.nextDouble();
-            System.out.print("Enter number 3:  ");
-            double num3 = sc.nextDouble();
+        for(int i = 0; i < runs; i++)
+        {
+            // Prompt for coordinates
+            System.out.print("Enter coordinates: ");
+            String input = scanner.nextLine();
 
-            // Find the average of the numbers
-            System.out.println();
-            double avg = (num1 + num2 + num3) / 3;
-            System.out.println("The average is " + avg);
+            // Regex to match numbers inside parentheses
+            Pattern pattern = Pattern.compile("\\(([^,]+),\\s*([^\\)]+)\\)\\s*\\(([^,]+),\\s*([^\\)]+)\\)");
+            Matcher matcher = pattern.matcher(input);
+            matcher.matches();
 
-            // Find the sum of the numbers
-            double sum = num1 + num2 + num3;
-            System.out.println("The sum is " + sum);
+            // Convert the coordinates to doubles
+            double x1 = Double.parseDouble(matcher.group(1).trim());
+            double y1 = Double.parseDouble(matcher.group(2).trim());
+            double x2 = Double.parseDouble(matcher.group(3).trim());
+            double y2 = Double.parseDouble(matcher.group(4).trim());
 
-            // Find the product of the numbers
-            double product = num1 * num2 * num3;
-            System.out.println("The product is " + product);
-            System.out.println();
+            // Find the distance using the distance formula and print
+            double distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+            System.out.println("The distance between the points is: " + distance);
+            System.out.println("");
         }
     }
 }
